@@ -489,41 +489,41 @@
       </div>
 
 
-      <div class="col-lg-7">
-        <form action="contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
-            <div class="row gy-4">
-    
-                <div class="col-md-6">
-                    <label for="name-field" class="pb-2">Your Name</label>
-                    <input type="text" name="name" id="name-field" class="form-control" required="">
-                </div>
-    
-                <div class="col-md-6">
-                    <label for="email-field" class="pb-2">Your Email</label>
-                    <input type="email" class="form-control" name="email" id="email-field" required="">
-                </div>
-    
-                <div class="col-md-12">
-                    <label for="subject-field" class="pb-2">Subject</label>
-                    <input type="text" class="form-control" name="subject" id="subject-field" required="">
-                </div>
-    
-                <div class="col-md-12">
-                    <label for="message-field" class="pb-2">Message</label>
-                    <textarea class="form-control" name="message" rows="10" id="message-field" required=""></textarea>
-                </div>
-    
-                <div class="col-md-12 text-center">
-                    <div class="loading">Loading</div>
-                    <div class="error-message"></div>
-                    <div class="sent-message">Your message has been sent. Thank you!</div>
-    
-                    <button type="submit">Send Message</button>
-                </div>
-    
+<div class="col-lg-7">
+    <form action="contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+        <div class="row gy-4">
+
+            <div class="col-md-6">
+                <label for="name-field" class="pb-2">Your Name</label>
+                <input type="text" name="name" id="name-field" class="form-control" required="">
             </div>
-        </form>
-    </div><!-- End Contact Form -->
+
+            <div class="col-md-6">
+                <label for="email-field" class="pb-2">Your Email</label>
+                <input type="email" class="form-control" name="email" id="email-field" required="">
+            </div>
+
+            <div class="col-md-12">
+                <label for="subject-field" class="pb-2">Subject</label>
+                <input type="text" class="form-control" name="subject" id="subject-field" required="">
+            </div>
+
+            <div class="col-md-12">
+                <label for="message-field" class="pb-2">Message</label>
+                <textarea class="form-control" name="message" rows="10" id="message-field" required=""></textarea>
+            </div>
+
+            <div class="col-md-12 text-center">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+
+                <button type="submit">Send Message</button>
+            </div>
+
+        </div>
+    </form>
+</div><!-- End Contact Form -->
     </div>
 
   </div>
@@ -548,33 +548,7 @@
     
 
   </footer>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const form = document.querySelector('.php-email-form');
-        
-        form.addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the default form submission
-    
-            const formData = new FormData(form);
-    
-            fetch('http://localhost:3000/contact', { // Adjust the URL as needed
-                method: 'POST',
-                body: formData,
-            })
-            .then(response => response.text())
-            .then(data => {
-                document.querySelector('.sent-message').innerText = data;
-                document.querySelector('.sent-message').style.display = 'block';
-                form.reset();
-            })
-            .catch(error => {
-                document.querySelector('.error-message').innerText = 'Error sending message. Please try again.';
-                document.querySelector('.error-message').style.display = 'block';
-            });
-        });
-    });
-    </script>
-    
+
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
       class="bi bi-arrow-up-short"></i></a>
