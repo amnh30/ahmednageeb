@@ -548,7 +548,33 @@
     
 
   </footer>
-
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.querySelector('.php-email-form');
+        
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+    
+            const formData = new FormData(form);
+    
+            fetch('http://localhost:3000/contact', { // Adjust the URL as needed
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => response.text())
+            .then(data => {
+                document.querySelector('.sent-message').innerText = data;
+                document.querySelector('.sent-message').style.display = 'block';
+                form.reset();
+            })
+            .catch(error => {
+                document.querySelector('.error-message').innerText = 'Error sending message. Please try again.';
+                document.querySelector('.error-message').style.display = 'block';
+            });
+        });
+    });
+    </script>
+    
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
       class="bi bi-arrow-up-short"></i></a>
