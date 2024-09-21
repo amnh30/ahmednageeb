@@ -1,16 +1,22 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Collect form data
     $name = htmlspecialchars($_POST['name']);
     $email = htmlspecialchars($_POST['email']);
     $subject = htmlspecialchars($_POST['subject']);
     $message = htmlspecialchars($_POST['message']);
 
-    $data = "Name: $name\nEmail: $email\nSubject: $subject\nMessage: $message\n\n";
+    // Prepare the content to be saved
+    $content = "Name: $name\nEmail: $email\nSubject: $subject\nMessage: $message\n\n";
 
-    // Append the data to Messages.txt
-    file_put_contents('Messages.txt', $data, FILE_APPEND | LOCK_EX);
+    // Define the file path
+    $file = 'message.txt';
 
-    // Redirect back to the form or display a success message
-    echo "<script>alert('Your message has been sent. Thank you!'); window.location.href='index.html';</script>";
+    // Save to the file
+    if (file_put_contents($file, $content, FILE_APPEND | LOCK_EX) !== false) {
+        echo "Your message has been sent. Thank you!";
+    } else {
+        echo "Error saving message. Please try again.";
+    }
 }
 ?>
